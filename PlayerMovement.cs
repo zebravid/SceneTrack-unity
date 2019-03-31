@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 //script controlling player movement
+//Desktop
 public class PlayerMovement : MonoBehaviour
 {
     private int frames;
