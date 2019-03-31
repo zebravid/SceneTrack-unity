@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 using UnityStandardAssets.CrossPlatformInput;
 
-
+/// <summary>
+/// </summary>
 public class Third890PersonInput : MonoBehaviour
 {
     public PlayerMovement Control;
