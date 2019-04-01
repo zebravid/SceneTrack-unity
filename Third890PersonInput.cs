@@ -40,14 +40,25 @@ public class Third890PersonInput : MonoBehaviour
         }
         else
         {
-            Control.Hinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_HVAxis890 * rotationSpeed;
-            Control.Vinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_VVAxis890 * speed;
+            //Use this button to control walk,run from mobile device. 
+            //not sure hoew to calculate walkSpeed in this case may be better to get rid of the blend tree
+            Control.anim5 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim5ButtonDown890;
+            if (Control.anim5)
+            {
+                Control.Hinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_HVAxis890 * walkRun* rotationSpeed;
+                Control.Vinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_VVAxis890 * walkRun* speed;
+            }
+            else
+            {
+                Control.Hinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_HVAxis890 * rotationSpeed;
+                Control.Vinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_VVAxis890 * speed;
+            }
             Control.anim0 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim0ButtonDown890;
             Control.anim1 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim1ButtonDown890;
             Control.anim2 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim2ButtonDown890;
             Control.anim3 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim3ButtonDown890;
             Control.anim4 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim4ButtonDown890;
-            Control.anim5 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim5ButtonDown890;
+
         }
 
 #if !MOBILE_INPUT
