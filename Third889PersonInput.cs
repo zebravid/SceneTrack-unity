@@ -41,7 +41,7 @@ public class Third889PersonInput : MonoBehaviour
         }
         else
         {
-            //Use this button to control walk,run from mobile device 
+            //Use this button to control walk,run from mobile device. 
             //not sure hoew to calculate walkSpeed in this case may be better to get rid of the blend tree
             Control.anim5 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim5ButtonDown889;
             if(Control.anim5)
