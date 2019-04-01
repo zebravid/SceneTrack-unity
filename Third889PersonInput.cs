@@ -29,26 +29,39 @@ public class Third889PersonInput : MonoBehaviour
             //if left shift pressed switches to run as the total speed value incresesCheck in player movement script
             if (Input.GetKey(KeyCode.LeftShift))
             { 
-            Control.Hinput = CrossPlatformInputManager.GetAxis("Horizontal") * walkRun*speed;
+            Control.Hinput = CrossPlatformInputManager.GetAxis("Horizontal") * walkRun* rotationSpeed;
             Control.Vinput = CrossPlatformInputManager.GetAxis("Vertical") * walkRun*speed;
             }
             else
             {
-                Control.Hinput = CrossPlatformInputManager.GetAxis("Horizontal") * speed;
+                Control.Hinput = CrossPlatformInputManager.GetAxis("Horizontal") * rotationSpeed;
                 Control.Vinput = CrossPlatformInputManager.GetAxis("Vertical") * speed;
 
             }
         }
         else
         {
-            Control.Hinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_HVAxis889 * rotationSpeed;
-            Control.Vinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_VVAxis889 * speed;
+            //Use this button to control walk,run from mobile device 
+            //not sure hoew to calculate walkSpeed in this case may be better to get rid of the blend tree
+            Control.anim5 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim5ButtonDown889;
+            if(Control.anim5)
+            {
+                //somehow need to figure out how to measure and normalize Joystick input
+                Control.Hinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_HVAxis889 * walkRun * rotationSpeed;
+                Control.Vinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_VVAxis889 * walkRun * speed;
+            }
+            else
+            {
+                Control.Hinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_HVAxis889 * rotationSpeed;
+                Control.Vinput = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_VVAxis889 * speed;
+            }
+
             Control.anim0 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim0ButtonDown889;
             Control.anim1 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim1ButtonDown889;
             Control.anim2 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim2ButtonDown889;
             Control.anim3 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim3ButtonDown889;
             Control.anim4 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim4ButtonDown889;
-            Control.anim5 = GameObject.Find("NetworkManager").GetComponent<NetworkServerUI>().m_anim5ButtonDown889;
+
         }
 
 #if !MOBILE_INPUT
