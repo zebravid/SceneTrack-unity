@@ -1,9 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 //script controlling player movement
 //Desktop
+//Mobile
 public class PlayerMovement : MonoBehaviour
 {
     private int frames;
