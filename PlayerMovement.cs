@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Setup to perform ever n-th cycle
+        //Setup to perform every n-th cycle
         frames++;
         moveInput = new Vector3(Hinput, 0f, Vinput);
         Vector3 cameraForward = mainCamera.transform.forward;
